@@ -3,9 +3,11 @@ var router = express.Router();
 
 /* GET users listing. */
 router.post('/', function (req, res, next) {
-  const minVal = req.body.min;
-  const maxVal = req.body.max;
+  const obj = JSON.parse(JSON.stringify(req.body));
+  const minVal = parseInt(obj.min);
+  const maxVal = parseInt(obj.max);
   const resultNum = Math.floor(Math.random() * maxVal) + minVal;
+  console.log(resultNum);
   const resultJson = {
     "number": resultNum
   }
